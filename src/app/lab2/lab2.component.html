@@ -1,0 +1,53 @@
+<div class="page">
+  <div id="bk-image">
+    <img src="https://img.olhardigital.com.br/wp-content/uploads/2021/08/criptografia-1000x450.png" />
+  </div>
+  <div id="main"*ngIf="!response; else prompt">
+    <h3>Rivest–Shamir–Adleman</h3>
+
+    <div>
+      <div class="input-gr">
+        <div class="box">
+          <label>Enter first prim number</label>
+          <input type="number" #firstPrim>
+        </div>
+
+        <div class="box">
+          <label>Enter second prim number</label>
+          <input type="number" #secondPrim>
+        </div>
+      </div>
+
+      <div class="input-gr">
+        <div class="box">
+          <label>Enter message</label>
+          <input type="number" #msg>
+        </div>
+
+        <div class="box">
+          <label>Enter e number</label>
+          <input type="number" #eNum>
+        </div>
+
+      </div>
+
+      <select #check name="check" id="check" >
+        <option value="on">Encrypt</option>
+        <option value="off">Decrypt</option>
+      </select>
+      <div class="submitBtn" (click)="onSubmit(firstPrim.value, secondPrim.value, msg.value, eNum.value, check.value)">
+        Submit
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #prompt>
+  <div id="prompt">
+    <div *ngIf="!decryptTask">Ecrypted Text: {{data}}</div>
+    <div *ngIf="decryptTask">Decrypted Text: {{data}}</div>
+
+    <div class="submitBtn" (click)="back()">Back</div>
+  </div>
+</ng-template>
